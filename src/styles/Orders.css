@@ -1,0 +1,16 @@
+.orders-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .orders-list {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .order-card {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
