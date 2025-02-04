@@ -1,11 +1,29 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { CartService } from '../services/CartService';
 import '../styles/Header.css';
 
-export const Header = ({ cartItemCount }) => {
+export const Header = () => {
   const { user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  const updateCartCount = () => {
+    setCartItemCount(CartService.getTotalItems());
+  };
+
+  useEffect(() => {
+    
+    // Actualizar contador inicial
+    updateCartCount();
+
+    // Suscribirse a cambios
+    const unsubscribe = CartService.subscribe(updateCartCount);
+
+    // Limpieza al desmontar
+    return () => unsubscribe();
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
