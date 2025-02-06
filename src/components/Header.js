@@ -73,10 +73,7 @@ export const Header = () => {
                   <span>Bienvenido, {user.username}</span>
                 </li>
                 <li>
-                  <button onClick={() => {
-                    logout();
-                    handleLinkClick();
-                  }}>
+                  <button onClick={logout}>
                     Cerrar Sesión
                   </button>
                 </li>

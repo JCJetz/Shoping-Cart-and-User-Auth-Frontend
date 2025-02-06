@@ -41,16 +41,20 @@ export function Cart() {
               <div key={item.id} className="cart-item">
                 <img src={item.image} alt={item.name} />
                 <div className="item-details">
-                  <h3>{item.name}</h3>
-                  <div className="price-quantity">
-                    <p>${item.price.toFixed(2)} x {item.quantity}</p>
-                    <div className="quantity-controls">
-                      <button onClick={() => handleQuantityChange(item.id, -1)}>-</button>
-                      <span>{item.quantity}</span>
-                      <button onClick={() => handleQuantityChange(item.id, 1)}>+</button>
-                    </div>
-                    <p>Subtotal: ${(item.price * item.quantity).toFixed(2)}</p>
+                  <h3 className="item-name">{item.name}</h3>
+                  {item.description && <p className="item-description">{item.description}</p>}
+                </div>
+                <div className="price-details">
+                  <p className="unit-price">${item.price.toFixed(2)} x {item.quantity}</p>
+                  <p className="subtotal">Subtotal: ${(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+                <div className="item-controls">
+                  <div className="quantity-controls">
+                    <button className="quantity-btn" onClick={() => handleQuantityChange(item.id, -1)}>-</button>
+                    <span className="quantity">{item.quantity}</span>
+                    <button className="quantity-btn" onClick={() => handleQuantityChange(item.id, 1)}>+</button>
                   </div>
+                  <button className="remove-btn" onClick={() => handleQuantityChange(item.id, -item.quantity)}>×</button>
                 </div>
               </div>
             ))}

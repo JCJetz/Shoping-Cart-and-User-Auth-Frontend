@@ -8,6 +8,7 @@ import { Cart } from './components/Cart';
 import { Orders } from './components/Orders';
 import { Login } from './components/auth/Login';
 import { NotFound } from './components/NotFound';
+import { Footer } from './components/Footer';
 import './App.css';
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </AuthProvider>
   );

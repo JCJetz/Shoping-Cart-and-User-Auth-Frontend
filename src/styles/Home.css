@@ -1,140 +1,105 @@
-.home {
-    min-height: 100vh;
-    padding: 3rem;
-    background: linear-gradient(135deg, #f6f8fd 0%, #f0f4f8 100%);
-  }
-  
-  .meals-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 3rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  
-  .meal-card {
-    position: relative;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  max-width: 350px;
-  margin: 0 auto;
+.home-container {
+  padding-top: calc(var(--header-height) + 20px);
+  min-height: 100vh;
 }
-  
-  .meal-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-  }
-  
-  .meal-card img {
-    height: 220px;
-  object-fit: contain;
-  padding: 1rem;
+
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 20px 0;
+}
+
+.meal-card {
   background: white;
-  }
-  
-  .meal-card:hover img {
-    transform: scale(1.1);
-  }
-  
-  .meal-info {
-    padding: 2rem;
-    background: white;
-  }
-  
-  .meal-info h3 {
-    font-size: 1.4rem;
-    color: #1a1a1a;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  
-  .meal-info p {
-    color: #666;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .meal-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    background: #fcfcfc;
-    border-top: 1px solid #f0f0f0;
-  }
-  
-  .price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2d3436;
-  }
-  
-  .add-to-cart {
-    background: #00b894;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
+}
+
+.meal-card:hover {
+  transform: translateY(-5px);
+}
+
+.meal-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.meal-content {
+  padding: 1.5rem;
+}
+
+.meal-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.meal-description {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.meal-price {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.add-to-cart-btn {
+  width: 100%;
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: auto;
-  min-width: 120px;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #ff5252;
+}
+
+.filters {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.category-select {
+  min-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .meals-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
   }
-  
-  .add-to-cart:hover:not(:disabled) {
-    background: #00a383;
-    transform: translateY(-2px);
+
+  .filters {
+    flex-direction: column;
   }
-  
-  .add-to-cart.added {
-    background: #00a383;
+
+  .search-input,
+  .category-select {
+    width: 100%;
   }
-  
-  .meal-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem;
-    background: #fcfcfc;
-    border-top: 1px solid #f0f0f0;
+}
+
+@media (max-width: 480px) {
+  .meal-card {
+    margin: 0 10px;
   }
-  @media (max-width: 1024px) {
-    .meals-grid {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .home {
-      padding: 2rem;
-    }
-    
-    .meal-card img {
-      height: 180px;
-    }
-    
-    .meal-info {
-      padding: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .home {
-      padding: 1rem;
-    }
-    
-    .meals-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .meal-info h3 {
-      font-size: 1.2rem;
-    }
-  }
+}

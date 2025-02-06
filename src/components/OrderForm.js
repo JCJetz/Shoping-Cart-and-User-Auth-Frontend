@@ -5,6 +5,12 @@ import { OrderService } from '../services/OrderService';
 import '../styles/OrderForm.css';
 import { useNavigate } from 'react-router-dom';
 
+const validatePhone = (phone) => {
+  // Elimina todos los espacios del número
+  const cleanPhone = phone.replace(/\s/g, '');
+  // Valida números móviles españoles (6 o 7 seguido de 8 dígitos)
+  return /^[67]\d{8}$/.test(cleanPhone);
+};
 
 export function OrderForm({ items }) {
   const navigate = useNavigate(); // Add useNavigate hook
@@ -28,8 +34,8 @@ export function OrderForm({ items }) {
     if (!formData.email.match(/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/))
       newErrors.email = 'Valid email is required';
     
-    if (!formData.phone.match(/^\d{10}$/))
-      newErrors.phone = 'Valid phone number is required';
+    if (!validatePhone(formData.phone))
+      newErrors.phone = 'Please enter a valid Spanish mobile number (e.g., 606302255)';
     
     if (!formData.address.trim())
       newErrors.address = 'Address is required';
@@ -105,6 +111,7 @@ export function OrderForm({ items }) {
           value={formData.phone}
           onChange={handleChange}
           className={errors.phone ? 'error' : ''}
+          placeholder="606302255"
         />
         {errors.phone && <span className="error-message">{errors.phone}</span>}
       </div>
