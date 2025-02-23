@@ -9,8 +9,10 @@ A simple restaurant web app that allows:
 - Place orders with form validation
 
 🔑 Test Credentials
+```
 User: user1
 Password: 123456
+```
 
 ## 🎯 This project will help you understand:
 
@@ -27,7 +29,7 @@ class CartService {
   // Subscription with cleanup
   subscribe(callback) {
     this.subscribers.push(callback);
-    return () => this.unsubscribe(callback); // returns cleanup fuction
+    return () => this.unsubscribe(callback); // returns cleanup function
   }
 
   notify() {
@@ -58,13 +60,13 @@ const validateForm = (values) => {
   const errors = {};
   
   if (!values.phone) {
-    errors.phone = 'Teléfono requerido';
+    errors.phone = 'Phone is required';
   } else if (!/^[67]\d{8}$/.test(values.phone.trim())) {
-    errors.phone = 'Formato inválido';
+    errors.phone = 'Invalid format';
   }
 
-  if (!values.email) errors.email = 'Email requerido';
-  if (!values.address) errors.address = 'Dirección requerida';
+  if (!values.email) errors.email = 'Email is required';
+  if (!values.address) errors.address = 'Address is required';
 
   return errors;
 };
@@ -101,12 +103,13 @@ const validateForm = (values) => {
 - LocalStorage for basic persistence
 
 ## 📁 Project Structure
+```
 src/
 ├── components/
 │   ├── auth/
 │   │   └── Login.js
 │   ├── Cart.js
-│   │── Footer.js
+│   ├── Footer.js
 │   ├── Header.js
 │   ├── Home.js
 │   ├── MealCard.js
@@ -121,10 +124,9 @@ src/
 ├── styles/
 └── data/
     └── users.json
-
+```
 
 ## 🚀 Installation and Usage
-
 ```bash
 # Clone repository
 git clone [repository-url]
